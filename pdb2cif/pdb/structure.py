@@ -97,6 +97,7 @@ class Structure:
 
         str_chain_id = line[72:78] if self.alt_chain_id else line[20:22]
         chain_id = self._eval_chain_id(str_chain_id.strip())
+        chain_id_out = str_chain_id.strip()
 
         opacity = line[54:60].strip()
         temperature = line[60:66].strip()
@@ -110,6 +111,7 @@ class Structure:
                 i_atom_name=atom_name,
                 i_res_name=line[17:20],
                 i_chain_id=chain_id,
+                i_chain_id_out=chain_id_out,
                 i_res_number=res_number,
                 i_opacity=opacity,
                 i_temperature=temperature,

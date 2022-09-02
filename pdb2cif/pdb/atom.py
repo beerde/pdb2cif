@@ -25,6 +25,7 @@ class Atom:
     i_atom_name: str
     i_res_name: str
     i_chain_id: Union[int, str]
+    i_chain_id_out: Union[int, str]
     i_res_number: Union[int, str]
     i_opacity: Union[float, str] = 0.0
     i_temperature: Union[float, str] = 0.0
@@ -35,6 +36,7 @@ class Atom:
         self.atom_name: AtomName = AtomName(self.i_atom_name)
         self.res_name: ResName = ResName(self.i_res_name)
         self.chain_id: ChainID = ChainID(self.i_chain_id)
+        self.chain_id_out: str = self.i_chain_id_out
         self.res_number: Number = Number(self.i_res_number)
         self.opacity: float = float(self.i_opacity) if float(self.i_opacity) != 0.0 else 1.0
         self.temperature: float = float(self.i_temperature)
@@ -61,8 +63,8 @@ class Atom:
                 self.element.ljust(2, " "),
                 self.atom_name.as_cif().ljust(7, " "),
                 ". ",
-                self.res_name.as_str().ljust(3, " "),
-                self.chain_id.as_cif().ljust(3, " "),
+                self.res_name.as_str().ljust(4, " "),
+                self.chain_id_out.ljust(3, " "),
                 self.chain_id.as_str().ljust(4, " "),
                 self.res_number.as_str().ljust(6, " "),
                 "? ",
@@ -73,8 +75,8 @@ class Atom:
                 f"{self.temperature: .4f}".ljust(10, " "),
                 "? ",
                 self.res_number.as_str().ljust(6, " "),
-                self.res_name.as_str().ljust(3, " "),
-                self.chain_id.as_chimera().ljust(3, " "),
+                self.res_name.as_str().ljust(4, " "),
+                self.chain_id_out.ljust(3, " "),
                 self.atom_name.as_cif().ljust(7, " "),
                 "1",
                 "\n",
